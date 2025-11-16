@@ -1,0 +1,37 @@
+# === OS ===
+.DS_Store
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+
+# === Maven ===
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# === Logs ===
+*.log
+logs/
+log/
+
+# === Spring Boot ===
+*.jar
+*.war
+
+# === Docker / DB data ===
+**/mysql/
+**/data/
+**/db-data/
+**/db/
+**/docker/mysql/
+**/docker/data/
+
+# === Testcontainers / local DB ===
+**/test-db/
+**/tmp/
+
+# === Node (如未使用可忽略) ===
+node_modules/
