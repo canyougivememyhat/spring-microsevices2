@@ -5,6 +5,7 @@ import com.techie.microservices.product.model.ProductRequest;
 import com.techie.microservices.product.model.ProductResponse;
 import com.techie.microservices.product.repo.ProductRepository;
 import com.techie.microservices.product.service.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -13,14 +14,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+@RequiredArgsConstructor
 @Service
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
-
-    public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     @Override
     public long createProduct(ProductRequest request) {

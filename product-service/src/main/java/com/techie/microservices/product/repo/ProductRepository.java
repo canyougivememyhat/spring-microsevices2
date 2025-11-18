@@ -7,8 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends MongoRepository<Product, Long> {
 
-//    @Lock(LockModeType.PESSIMISTIC_WRITE)
-//    @Query("SELECT p FROM Product p WHERE p.id = :id")
-//    Optional<Product> findByIdForUpdate(Long id);
-
 }

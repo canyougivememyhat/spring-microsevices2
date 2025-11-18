@@ -5,21 +5,19 @@ import com.techie.microservices.product.model.ProductRequest;
 import com.techie.microservices.product.model.ProductResponse;
 import com.techie.microservices.product.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1/products")
 public class ProductController {
 
     private final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
 
     @Operation(summary = "2.1.1 新增商品", description = "新增商品")
     @PostMapping
