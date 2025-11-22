@@ -1,21 +1,26 @@
 package com.techie.mocroservices.order.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "order")
+@Table(name = "t_orders")
 public class Order {
 
     @Id
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String orderNumber;
+    private String skuCode;
+    private BigDecimal price;
+    private Integer quantity;
 
 }
 
