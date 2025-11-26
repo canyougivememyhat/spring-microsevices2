@@ -1,6 +1,6 @@
 package com.techie.microservices.product.model;
 
-public record ProductResponse(long id,
+public record ProductResponse(String id,
                               String name,
                               String description,
                               Integer price,

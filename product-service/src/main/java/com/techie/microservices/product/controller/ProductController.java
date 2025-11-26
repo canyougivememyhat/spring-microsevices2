@@ -22,7 +22,7 @@ public class ProductController {
     @Operation(summary = "2.1.1 新增商品", description = "新增商品")
     @PostMapping
     ResponseEntity<ApiResponse> createProduct(@RequestBody ProductRequest request){
-        long productId = productService.createProduct(request);
+        String productId = productService.createProduct(request);
 
         ApiResponse response = ApiResponse.builder()
                 .status(HttpStatus.OK)
@@ -36,7 +36,7 @@ public class ProductController {
 
     @Operation(summary = "2.1.2 依 ID 取得商品資訊", description = "依 ID 取得商品資訊")
     @GetMapping("/{id}")
-    ResponseEntity<ApiResponse> showProductById(@PathVariable Integer id){
+    ResponseEntity<ApiResponse> showProductById(@PathVariable String id){
         ProductResponse product = productService.getProductById(id);
 
         ApiResponse response = ApiResponse.builder()
@@ -51,7 +51,7 @@ public class ProductController {
 
     @Operation(summary = "2.1.3 依 ID 修改商品資訊", description = "依 ID 修改商品資訊")
     @PutMapping("/{id}")
-    ResponseEntity<ApiResponse> updateProductById(@PathVariable Integer id,
+    ResponseEntity<ApiResponse> updateProductById(@PathVariable String id,
                                                   @RequestBody ProductRequest request){
         productService.updateProduct(id, request);
 
@@ -66,7 +66,7 @@ public class ProductController {
 
     @Operation(summary = "2.1.4 依 ID 刪除商品", description = "依 ID 刪除商品")
     @DeleteMapping("/{id}")
-    ResponseEntity<ApiResponse> deleteProductById(@PathVariable Integer id){
+    ResponseEntity<ApiResponse> deleteProductById(@PathVariable String id){
         productService.deleteProduct(id);
 
         ApiResponse response = ApiResponse.builder()

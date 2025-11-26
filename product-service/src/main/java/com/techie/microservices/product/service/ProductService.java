@@ -4,11 +4,11 @@ import com.techie.microservices.product.model.ProductRequest;
 import com.techie.microservices.product.model.ProductResponse;
 
 public interface ProductService {
-    long createProduct(ProductRequest request);
+    String createProduct(ProductRequest request);
 
-    ProductResponse getProductById(long id);
+    ProductResponse getProductById(String id);
 
-    void updateProduct(long id, ProductRequest request);
+    void updateProduct(String id, ProductRequest request);
 
-    void deleteProduct(long id);
+    void deleteProduct(String id);
 }

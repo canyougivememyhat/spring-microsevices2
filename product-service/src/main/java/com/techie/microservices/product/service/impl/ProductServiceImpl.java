@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     @Override
-    public long createProduct(ProductRequest request) {
+    public String createProduct(ProductRequest request) {
         Product product = Product.builder()
                 .name(request.name())
                 .description(request.description())
@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponse getProductById(long id) {
+    public ProductResponse getProductById(String id) {
         return convertToProductDto(productRepository.findById(id).orElseThrow(
                     () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "找不到 id="+id+" 的產品")
                 )
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void updateProduct(long id, ProductRequest request) {
+    public void updateProduct(String id, ProductRequest request) {
         Product product = productRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "找不到 id="+id+" 的產品")
         );
@@ -57,7 +57,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProduct(long id) {
+    public void deleteProduct(String id) {
         Product product = productRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "找不到 id="+id+" 的產品")
         );
@@ -74,7 +74,8 @@ public class ProductServiceImpl implements ProductService {
                 product.getStockQuantity(),
                 product.getIsActive(),
                 product.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_DATE),
-                product.getUpdatedAt().format(DateTimeFormatter.ISO_LOCAL_DATE)
+                product.getUpdatedAt() == null ? null :
+                        product.getUpdatedAt().format(DateTimeFormatter.ISO_LOCAL_DATE)
         );
     }
 

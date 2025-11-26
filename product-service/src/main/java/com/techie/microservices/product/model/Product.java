@@ -16,8 +16,9 @@ import java.time.LocalDate;
 @Builder
 @Data
 public class Product {
+
     @Id
-    private Long id;
+    private String id;
 
     private String name;
 
